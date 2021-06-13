@@ -31,7 +31,9 @@ pipeline {
 	}
 	stage("Deploy to tomcat") {
             steps {
-                sh 'scp -o StrictHostKeyChecking=no artifact_download/example-repo-local/ci/jenkins/aws/project/1.0-RAMA/*.war singh_piyushkr79@34.70.139.158:/opt/tomcat/webapps'
+                sshagent(['tomcat_deploy']) {
+                    sh 'scp -o StrictHostKeyChecking=no artifact_download/example-repo-local/ci/jenkins/aws/project/1.0-RAMA/*.war singh_piyushkr79@34.70.139.158:/opt/tomcat/webapps'
+		}
 	    }    
 	}	    
     }	
