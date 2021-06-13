@@ -15,7 +15,7 @@ pipeline {
                   url: 'http://34.136.221.214:8081/artifactory'
 		  username: 'jenkins'     
 		  password: 'AKCp8jQcwjZvC9KmZUMjuZhBNd2C4K76aLvxABoCAfHQ3qv1QTdDeuBsoxijbSrhXPd4cphkX'
-               }
+               )
 	       rtDownload (
                   serverId: 'Artifactory-1',
                   spec: '''{
@@ -26,6 +26,7 @@ pipeline {
                        }
                       ]
                   }'''
+		)
             }   
 	}
     }	
