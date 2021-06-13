@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Maven Build') {
             steps {
-                 withEnv(["MVN_HOME=$mvnHome"]) {
+                 withEnv(["MVN_HOME=/opt/maven"]) {
                      sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
             }
 	}    
