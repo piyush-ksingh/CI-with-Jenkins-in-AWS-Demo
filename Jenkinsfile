@@ -6,13 +6,20 @@ pipeline {
                 git url: 'https://github.com/piyush-ksingh/CI-with-Jenkins-in-AWS-Demo'
             }
         }
-        stage('Maven Build') {
+        stage("build & SonarQube analysis") {
             steps {
-                 withEnv(["MVN_HOME=/opt/maven"]) {
-                     sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
+                withSonarQubeEnv('sonarqube_server') {
+                   sh 'mvn clean package sonar:sonar'
+                }
             }
-	}    
-	
+        }
+        stage("Quality Gate") {
+            steps {
+               timeout(time: 1, unit: 'HOURS') {
+                   waitForQualityGate abortPipeline: true
+               }
+            }   
+	}
     }	
 }
 }
