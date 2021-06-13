@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Git') {
             steps {
-                git url:https://github.com/piyush-ksingh/CI-with-Jenkins-in-AWS-Demo
+                git url: 'https://github.com/piyush-ksingh/CI-with-Jenkins-in-AWS-Demo'
 		  }
             }
         stage('Maven Build') {
