@@ -15,9 +15,22 @@ pipeline {
         }
         stage("Quality Gate") {
             steps {
-               timeout(time: 1, unit: 'HOURS') {
-                   waitForQualityGate abortPipeline: true
+               rtServer (
+                  id: 'Artifactory-server',
+                  url: 'http://34.136.221.214:8081/artifactory'
+		  username: 'jenkins'     
+		  password: 'AKCp8jQcwjZvC9KmZUMjuZhBNd2C4K76aLvxABoCAfHQ3qv1QTdDeuBsoxijbSrhXPd4cphkX'
                }
+	       rtDownload (
+                  serverId: 'Artifactory-1',
+                  spec: '''{
+                      "files": [
+                       {
+                          "pattern": "example-repo-local/ci/jenkins/aws/project/1.0-RAMA/project-1.0-RAMA.war",
+                          "target": "artifact_download/"
+                       }
+                      ]
+                  }'''
             }   
 	}
     }	
