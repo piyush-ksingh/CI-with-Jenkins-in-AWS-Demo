@@ -21,8 +21,8 @@ pipeline {
 	stage("Deploy to tomcat") {
             steps {
                 sshagent(['tomcat_deploy']) {
-		    sh 'ping 34.136.58.92 -c 1'
-                    sh 'ssh -vvv -o StrictHostKeyChecking=no singh.piyushkr79@gmail.com@34.136.58.92'
+		    sh 'ping 34.70.7.142 -c 1'
+                    sh 'ssh -o StrictHostKeyChecking=no singh.piyushkr79@34.70.7.142'
 		    sh 'cd /opt/tomcat/webapps'
 		    sh 'curl -O -u jenkins:AKCp8jQcwjZvC9KmZUMjuZhBNd2C4K76aLvxABoCAfHQ3qv1QTdDeuBsoxijbSrhXPd4cphkX http://35.188.4.139:8081/artifactory/example-repo-local/ci/jenkins/aws/project/1.0-RAMA/project-1.0-RAMA.war'
 		}
