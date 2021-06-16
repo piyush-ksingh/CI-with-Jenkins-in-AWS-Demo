@@ -16,23 +16,14 @@ pipeline {
 		  username: 'jenkins',     
 		  password: 'AKCp8jQcwjZvC9KmZUMjuZhBNd2C4K76aLvxABoCAfHQ3qv1QTdDeuBsoxijbSrhXPd4cphkX'
                )
-	       rtDownload (
-                  serverId: 'Artifactory-server',
-                  spec: '''{
-                      "files": [
-                       {
-                          "pattern": "example-repo-local/ci/jenkins/aws/project/1.0-RAMA/*.war",
-                          "target": "artifact_download/"
-                       }
-                      ]
-                  }'''
-	       )
             }   
 	}
 	stage("Deploy to tomcat") {
             steps {
                 sshagent(['tomcat_deploy']) {
-                    sh 'scp -o StrictHostKeyChecking=no artifact_download/example-repo-local/ci/jenkins/aws/project/1.0-RAMA/*.war singh_piyushkr79@34.70.7.142:/opt/tomcat/webapps'
+                    sh 'ssh -o StrictHostKeyChecking=no singh_piyushkr79@34.70.7.142',
+		    sh 'cd /opt/tomcat/webapps',
+		    sh 'wget -O jenkins:AKCp8jQcwjZvC9KmZUMjuZhBNd2C4K76aLvxABoCAfHQ3qv1QTdDeuBsoxijbSrhXPd4cphkX /artifactory/example-repo-local/ci/jenkins/aws/project/1.0-RAMA/project-1.0-RAMA.war'
 		}
 	    }    
 	}	    
