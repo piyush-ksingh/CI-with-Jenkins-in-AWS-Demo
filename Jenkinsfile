@@ -12,7 +12,7 @@ pipeline {
             steps {
                rtServer (
                   id: 'Artifactory-server',
-                  url: 'http://34.136.221.214:8081/artifactory',
+                  url: 'http://35.188.4.139:8081/artifactory',
 		  username: 'jenkins',     
 		  password: 'AKCp8jQcwjZvC9KmZUMjuZhBNd2C4K76aLvxABoCAfHQ3qv1QTdDeuBsoxijbSrhXPd4cphkX'
                )
