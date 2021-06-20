@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+	stage("git checkout") {
+            steps {
+                git url: 'https://github.com/piyush-ksingh/CI-with-Jenkins-in-AWS-Demo.git'
+            }
+        }
         stage("build & SonarQube analysis") {
             steps {
                 withSonarQubeEnv('sonarqube_server') {
@@ -8,7 +13,7 @@ pipeline {
                 }
             }
         }
-        stage("Artifacts upload/download") {
+        stage("Artifacts upload") {
             steps {
                rtServer (
                   id: 'Artifactory-server',
