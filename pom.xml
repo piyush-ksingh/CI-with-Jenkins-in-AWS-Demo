@@ -6,7 +6,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Project Build</name>
-
+    <scm>
+    <connection>scm:git:https://github.com/piyush-ksingh/CI-with-Jenkins-in-AWS-Demo.git</connection>
+        <developerConnection>scm:git:https://github.com/piyush-ksingh/CI-with-Jenkins-in-AWS-Demo.git</developerConnection>
+    </scm>
     <modules>
         <module>project</module>
     </modules>
