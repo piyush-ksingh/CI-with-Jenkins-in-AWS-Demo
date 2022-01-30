@@ -10,6 +10,10 @@
     <artifactId>project</artifactId>
     <packaging>war</packaging>
     <name>Project</name>
+     <scm>
+    <connection>scm:git:https://github.com/piyush-ksingh/CI-with-Jenkins-in-AWS-Demo.git</connection>
+    <developerConnection>scm:git:https://github.com/piyush-ksingh/CI-with-Jenkins-in-AWS-Demo.git</developerConnection>
+    </scm>
  <dependencies>
         <!-- runtime dependency -->
         <dependency>
